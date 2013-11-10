@@ -7,7 +7,7 @@ sub combi{
         print "n=$n , r=$r\n";
 
         if ( 0 lt $r && $r lt $n ) {
-                print "combi(",$n - 1,",",$r - 1,") + combi(",$n - 1,",$r)\n";
+                print "combi(", $n - 1, ",", $r - 1, ") + combi(", $n - 1, ",$r)\n";
                 return combi(($n - 1),($r - 1)) + combi(($n - 1),$r);
         } else {
                 print "else return 1\n";
