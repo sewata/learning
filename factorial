@@ -1,9 +1,0 @@
-procedure factorial(N):
-  if N > 1 then
-    return N * factorial(N - 1)
-  else
-    return 1
-
-# 階乗 n!
-# n > 1 のとき n! = n * (n-1)!
-# n = 1 のとき n! = 1
