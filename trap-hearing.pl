@@ -101,7 +101,7 @@ while(<>) {
     if ($line =~ /^\s+\d+:/) {
       $column++;
       $varnum++;
-      if ($varnum gt $varnummax) {
+      if ($varnum > $varnummax) {
         $worksheet->write(0, $column, "Varbind($varnum)");
         $varnummax = $varnum;
         print "Varbind($varnum) write on 0,$column due to new var\n" if $DEBUG;
