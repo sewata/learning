@@ -22,10 +22,11 @@ my $varnum = 0;
 my $varnummax = 0;
 
 $worksheet->write(0, 0, 'EventName');
-$worksheet->write(0, 1, 'Enterprise');
-$worksheet->write(0, 2, 'TrapType');
-$worksheet->write(0, 3, 'SpecificCode');
-$worksheet->write(0, 4, 'LongDescription');
+$worksheet->write(0, 1, 'OID');
+$worksheet->write(0, 2, 'Enterprise');
+$worksheet->write(0, 3, 'TrapType');
+$worksheet->write(0, 4, 'SpecificCode');
+$worksheet->write(0, 5, 'LongDescription');
 
 while(<>) {
   my $line = $_;
@@ -41,14 +42,17 @@ while(<>) {
     $worksheet->write($row, 0, $name);
     print "name write on $row,0 $name\n" if $DEBUG;
 
-    $worksheet->write($row, 1, $enterprise);
-    print "enterprise write on $row,1 $enterprise\n" if $DEBUG;
+    $worksheet->write($row, 1, $oid);
+    print "oid write on $row,1 $oid\n" if $DEBUG;
 
-    $worksheet->write($row, 2, '6:EnterpriseSpecific');
-    print "6:EnterpriseSpecific write on $row,2\n" if $DEBUG;
+    $worksheet->write($row, 2, $enterprise);
+    print "enterprise write on $row,2 $enterprise\n" if $DEBUG;
 
-    $worksheet->write($row, 3, $specific);
-    print "specific write on $row,3 $specific\n" if $DEBUG;
+    $worksheet->write($row, 3, '6:EnterpriseSpecific');
+    print "6:EnterpriseSpecific write on $row,3\n" if $DEBUG;
+
+    $worksheet->write($row, 4, $specific);
+    print "specific write on $row,4 $specific\n" if $DEBUG;
 
     next;
   }
@@ -56,8 +60,8 @@ while(<>) {
   if ($line =~ /^EDESC$/) {
     if (($longdesc) and (!$VARSflag)) {
       chomp $longdesc;
-      $worksheet->write($row, 4, $longdesc);
-      print "LD write on $row,4 due to EDESC $longdesc\n" if $DEBUG;
+      $worksheet->write($row, 5, $longdesc);
+      print "LD write on $row,5 due to EDESC $longdesc\n" if $DEBUG;
     }
     if ($var) {
       chomp $var;
@@ -83,12 +87,12 @@ while(<>) {
   if ($line =~ /^Variables:$/) {
     if ($longdesc) {
       chomp $longdesc;
-      $worksheet->write($row, 4, $longdesc);
-      print "LD write on $row,4 due to Variables: $longdesc\n" if $DEBUG;
+      $worksheet->write($row, 5, $longdesc);
+      print "LD write on $row,5 due to Variables: $longdesc\n" if $DEBUG;
     }
     $LDflag = 0;
     $VARSflag = 1;
-    $column = 4;
+    $column = 5;
     $varnum = 0;
     next;
   }
