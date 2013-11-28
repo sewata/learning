@@ -1,4 +1,4 @@
-文字コード設定と確認
+# 文字コード設定と確認
 
 /etc/my.cnf
 character-set-server=utf8
@@ -12,3 +12,21 @@ Db     characterset:    utf8
 Client characterset:    utf8
 Conn.  characterset:    utf8
 ～～
+
+# DB作成と確認
+mysql> CREATE DATABASE db1;
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| db1                |
+| mysql              |
++--------------------+
+
+mysqlデータベースにはユーザを管理するuserテーブルなどが保管されている
+
+# DB指定
+mysql> use db1
+Database changed
