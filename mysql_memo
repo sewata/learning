@@ -1,0 +1,14 @@
+文字コード設定と確認
+
+/etc/my.cnf
+character-set-server=utf8
+skip-character-set-client-handshake
+
+mysql> status
+--------------
+～～
+Server characterset:    utf8
+Db     characterset:    utf8
+Client characterset:    utf8
+Conn.  characterset:    utf8
+～～
