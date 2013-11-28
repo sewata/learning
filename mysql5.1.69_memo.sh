@@ -1,7 +1,8 @@
 Server version: 5.1.69 Source distribution
 
+#
 # 文字コード設定と確認
-
+#
 /etc/my.cnf
 character-set-server=utf8
 skip-character-set-client-handshake
@@ -15,7 +16,9 @@ Client characterset:    utf8
 Conn.  characterset:    utf8
 ～～
 
+#
 # DB作成と確認　ちなSHOWはMySQL地方の方言
+#
 mysql> CREATE DATABASE learn1;
 
 mysql> SHOW DATABASES;
@@ -29,7 +32,9 @@ mysql> SHOW DATABASES;
 
 mysqlデータベースにはユーザを管理するuserテーブルなどが保管されている
 
+#
 # DB指定と確認
+#
 mysql> use learn1
 Database changed
 
@@ -40,7 +45,9 @@ mysql> SELECT DATABASE();
 | learn1     |
 +------------+
 
+#
 # DBを指定してmysqlモニタ起動と確認
+#
 [root@localhost ~]# mysql db1 -u root -p
 Enter password:
 
@@ -51,11 +58,15 @@ mysql> SELECT DATABASE();
 | learn1     |
 +------------+
 
+#
 # テーブル作成
 # emp1テーブル、カラム（number, name, age）
+#
 mysql> CREATE TABLE emp1(number INT, name VARCHAR(20), age INT);
 
+#
 # データベースのテーブル一覧表示
+#
 mysql> SHOW TABLES;
 +------------------+
 | Tables_in_learn1 |
@@ -63,10 +74,14 @@ mysql> SHOW TABLES;
 | emp1             |
 +------------------+
 
-# テーブルでの文字コード指定
+#
+# テーブル作成時の文字コード指定
+#
 mysql> CREATE TABLE emp1(number INT, name VARCHAR(20), age INT) CHARSET=utf8;
 
+#
 # useで指定したDB以外のDBのデータへのアクセス（DB名.テーブル名）
+#
 mysql> SELECT DATABASE();
 +------------+
 | DATABASE() |
@@ -76,7 +91,9 @@ mysql> SELECT DATABASE();
 
 mysql> SELECT * FROM mysql.user;
 
+#
 # テーブルのカラム構造の確認
+#
 mysql> DESC emp1;
 +--------+-------------+------+-----+---------+-------+
 | Field  | Type        | Null | Key | Default | Extra |
