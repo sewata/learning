@@ -1,3 +1,5 @@
+Server version: 5.1.69 Source distribution
+
 # 文字コード設定と確認
 
 /etc/my.cnf
@@ -13,7 +15,7 @@ Client characterset:    utf8
 Conn.  characterset:    utf8
 ～～
 
-# DB作成と確認
+# DB作成と確認　ちなSHOWはMySQL地方の方言
 mysql> CREATE DATABASE learn1;
 
 mysql> SHOW DATABASES;
@@ -53,7 +55,7 @@ mysql> SELECT DATABASE();
 # emp1テーブル、カラム（number, name, age）
 mysql> CREATE TABLE emp1(number INT, name VARCHAR(20), age INT);
 
-# データベースのテーブル一覧表示　ちなSHOWはMySQL地方の方言
+# データベースのテーブル一覧表示
 mysql> SHOW TABLES;
 +------------------+
 | Tables_in_learn1 |
